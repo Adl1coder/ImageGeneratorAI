@@ -31,6 +31,7 @@ class LogicApi() {
     fun callAPI(entrada: String, result:TextView, img1: ImageView, imgResized: ImageView, progressDialog:ProgressDialog) {
 
         val jsonBody= JSONObject()
+        //dont use key like this. It is just for testing. You should store it in a secure way.
         val key="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"//llave de Api Dalle
         try{
             jsonBody.put("prompt",entrada);
@@ -49,7 +50,7 @@ class LogicApi() {
             override fun onFailure(call: Call, e: IOException) {
 
                 GlobalScope.launch (Dispatchers.Main) {
-                    result.setText("Resim oluşturulurken hata oluştu"+e.message)
+                    result.setText("Resim oluşturulurken hata oluştu: "+e.message)
                     progressDialog.dismiss()
                 }
 
