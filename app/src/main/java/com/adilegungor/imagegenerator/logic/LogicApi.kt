@@ -56,14 +56,26 @@ class LogicApi() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                try{
-                    val jsonObject= JSONObject(response.body?.string());
-                    val imageUrl=jsonObject.getJSONArray("data").getJSONObject(0).getString("url");
+                try {
+                    if (response.isSuccessful) { // Checks if the response code is 200-299
+                        val responseBody = response.body?.string() // Safely get the body string once
+                        val jsonObject = JSONObject(responseBody)
+                        val imageUrl = jsonObject.getJSONArray("data").getJSONObject(0).getString("url")
 
-                    imageLoader.cargarImagen(imageUrl,result,img1,imgResized,progressDialog)
-
-                }catch(e:Exception){
-                    e.printStackTrace();
+                        GlobalScope.launch(Dispatchers.Main) {
+                            imageLoader.cargarImagen(imageUrl, result, img1, imgResized, progressDialog)
+                        }
+                    } else {
+                        throw IOException("Server returned non-OK status: ${response.code}")
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    GlobalScope.launch(Dispatchers.Main) {
+                        result.text = "Failed to create image: ${e.message}"
+                        progressDialog.dismiss()
+                    }
+                } finally {
+                    response.close() // Ensure the response is closed to free resources
                 }
             }
         })
