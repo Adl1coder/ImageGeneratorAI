@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.adilegungor.imagegenerator.ui.GeneratorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Seçtiğiniz arka planı oluşturun"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            ></TextView>
+openai
+        <EditText
+            android:id="@+id/txtEntrada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:hint="giriş girin.."
+            android:textSize="25dp"
+            ></EditText>
+
+        <Button
+            android:id="@+id/btnGenerar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:text="Oluşturun"
+            android:backgroundTint="@color/teal_200"
+            ></Button>
+
+        <TextView
+            android:id="@+id/textoResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SONUÇ"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+
+            ></TextView>
+
+        <ImageView
+            android:id="@+id/imagenGenerada"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_collections_256"
+            android:layout_marginTop="30dp"
+            ></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAplicar"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="Uygula"></Button>
+
+            <Button
+                android:id="@+id/btnDescargar"
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:text="İndir"></Button>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_collections_256" />
+
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
